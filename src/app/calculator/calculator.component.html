@@ -1,0 +1,125 @@
+<div class="container">
+  <div>
+    <form class="form-horizontal form-pricing" role="form" [formGroup]="loanCalculatorForm">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-xs-12">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xl-12">
+              <mat-card class="card">
+                <mat-card-header>
+                  <mat-card-title>Calculator</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <div class="loan-form">
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xl-12">
+                          <div class="loan-slider">
+                            <label class="control-label">Amount </label>
+                            <span> Choose loan amount</span>
+                            <div class="row">
+                              <div class="col-md-12 col-sm-12 col-xl-12">
+                                <mat-slider formControlName="loanAmount" class="slider"
+                                            [disabled]="false"
+                                            [invert]="false"
+                                            [max]="1000"
+                                            [min]="100"
+                                            [step]="50"
+                                            [thumbLabel]="true"
+                                            [tickInterval]="1"
+                                            [displayWith]="formatRateLabel"
+                                >
+                                </mat-slider>
+                                <div class="mat-error" *ngIf="errorHandling('loanAmount') && submitClick">
+                                  Please select loan amount
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xl-12">
+                          <div class="loan-slider">
+                            <label class="control-label">Period - Month(s)</label>
+                            <span> Choose loan period</span>
+                            <div class="row">
+                              <div class="col-md-12 col-sm-12 col-xl-12">
+                                <mat-slider formControlName="loanPeriod" class="slider"
+                                            [disabled]="false"
+                                            [invert]="false"
+                                            [max]="12"
+                                            [min]="1"
+                                            [step]="1"
+                                            [thumbLabel]="true"
+                                            [tickInterval]="1"
+                                >
+                                </mat-slider>
+                                <div class="mat-error" *ngIf="errorHandling('loanPeriod') && submitClick">
+                                  Please select loan period
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xl-12">
+                          <div class="loan-slider">
+                            <label class="control-label">Repayment date </label>
+                            <span> Choose your monthly repayment date</span>
+                            <div class="col-md-12 col-sm-12 col-xl-12 content">
+                              <mat-form-field>
+                                <input matInput formControlName="loanReplacementDate" [matDatepicker]="dp1"
+                                       [matDatepickerFilter]="dateFilter" placeholder="Pick a date" disabled>
+                                <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+                                <mat-datepicker #dp1 disabled="false"></mat-datepicker>
+                              </mat-form-field>
+                            </div>
+                            <div class="mat-error" *ngIf="errorHandling('loanReplacementDate') && submitClick">
+                              Please select loan replacement date
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xl-12">
+                          <button class="calculator-btn" mat-raised-button color="primary" (click)="calculate()">
+                            Calculate
+                          </button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xl-12">
+              <app-chart [interestAmount]="summary.totalInterest" [loanAmount]="summary.loanAmount"></app-chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="col-sm-12">
+              <app-summary [summary]="summary"></app-summary>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <app-installments [dataSource]="dataSource"></app-installments>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-sm-12">
+
+      </div>
+    </div>
+  </div>
+</div>

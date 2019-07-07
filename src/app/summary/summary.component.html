@@ -1,0 +1,46 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>Summary</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="loan-form">
+      <div class="form-group summary-group">
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-xs-12">
+            <label class="control-label">Loan Amount (£): </label>
+            <span class="help-text">Amount that you required </span>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xs-12 text-right">
+           <span class="summary-amounts">{{summary.loanAmount|number: '1.2-2'}}</span>
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group summary-group">
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-xs-12">
+            <label class="control-label">Total Interest (£): </label>
+            <span class="help-text">Total Interest that you will pay</span>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xs-12 text-right">
+            <span class="summary-amounts">{{summary.totalInterest|number: '1.2-2'}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group summary-group">
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-xs-12">
+            <label class="control-label">Total Amount (£): </label>
+            <span class="help-text">Amount that you need to pay</span>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xs-12 text-right">
+           <span class="summary-amounts">{{summary.totalAmount | number: '1.2-2'}}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </mat-card-content>
+
+</mat-card>
