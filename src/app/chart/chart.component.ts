@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 
 declare var require: any;
